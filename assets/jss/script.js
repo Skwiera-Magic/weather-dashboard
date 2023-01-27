@@ -50,19 +50,39 @@ $('.search-button').on('click', function (event) {
       <div class="row">
       <h3>5-Day Forecast:</h3>
       <div class="col-sm forecast-1 border">
-      1 of 5 columns
+      <p>${moment().add(1,'days').format('DD/MM/YYYY')}</p>
+      <img src="https://openweathermap.org/img/wn/${weatherResponse.list[1].weather[0].icon}.png"></img>
+      <p>Temp: ${(weatherResponse.list[1].main.feels_like -273.15).toFixed(2)}</p>
+      <p>Wind: ${weatherResponse.list[1].wind.speed}Km/h</p>
+      <p>Humidity: ${weatherResponse.list[1].main.humidity}%</p>
       </div>
       <div class="col-sm forecast-2 border">
-      2 of 5 columns
+      <p>${moment().add(2,'days').format('DD/MM/YYYY')}</p>
+      <img src="https://openweathermap.org/img/wn/${weatherResponse.list[2].weather[0].icon}.png"></img>
+      <p>Temp: ${(weatherResponse.list[2].main.feels_like -273.15).toFixed(2)}C</p>
+      <p>Wind: ${weatherResponse.list[2].wind.speed}Km/h</p>
+      <p>Humidity: ${weatherResponse.list[2].main.humidity}%</p>      
       </div>
       <div class="col-sm forecast-3 border">
-      3 of 5 columns
+      <p>${moment().add(3,'days').format('DD/MM/YYYY')}</p>
+      <img src="https://openweathermap.org/img/wn/${weatherResponse.list[3].weather[0].icon}.png"></img>
+      <p>Temp: ${(weatherResponse.list[3].main.feels_like -273.15).toFixed(2)}</p>
+      <p>Wind: ${weatherResponse.list[3].wind.speed}Km/h</p>
+      <p>Humidity: ${weatherResponse.list[3].main.humidity}%</p>      
       </div>
       <div class="col-sm forecast-4 border">
-      4 of 5 columns
+      <p>${moment().add(4,'days').format('DD/MM/YYYY')}</p>
+      <img src="https://openweathermap.org/img/wn/${weatherResponse.list[4].weather[0].icon}.png"></img>
+      <p>Temp: ${(weatherResponse.list[4].main.feels_like -273.15).toFixed(2)}</p>
+      <p>Wind: ${weatherResponse.list[4].wind.speed}Km/h</p>
+      <p>Humidity: ${weatherResponse.list[4].main.humidity}%</p>
       </div>
       <div class="col-sm forecast-5 border">
-      5 of 5 columns
+      <p>${moment().add(5,'days').format('DD/MM/YYYY')}</p>
+      <img src="https://openweathermap.org/img/wn/${weatherResponse.list[5].weather[0].icon}.png"></img>
+      <p>Temp: ${(weatherResponse.list[5].main.feels_like -273.15).toFixed(2)}</p>
+      <p>Wind: ${weatherResponse.list[5].wind.speed}Km/h</p>
+      <p>Humidity: ${weatherResponse.list[5].main.humidity}%</p>      
       </div>
       </div>
       </div>
