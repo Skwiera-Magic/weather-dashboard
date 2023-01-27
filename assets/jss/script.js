@@ -21,13 +21,12 @@ $('.search-button').on('click', function (event) {
       method: "GET"
     }).then(function (weatherResponse) {
       log(weatherResponse)
-      $('#today').prepend(`
-      <table class="table">
-      <p><h3>${weatherResponse.name} ${moment().format('DD/MM/YYYY')}</h3></p>
+      $('#today').empty()
+      $('#today').append(`
+      <h3>${weatherResponse.name} ${moment().format('DD/MM/YYYY')}</h3>
       <p>Temperature: ${(weatherResponse.main.temp - 273.15).toFixed(2)}C Degrees</p>
       <p>Wind speed: ${weatherResponse.wind.speed}km/h</p>
       <p>Humidity: ${weatherResponse.main.humidity}%</p>
-      </table>
       `)
     })
   });
