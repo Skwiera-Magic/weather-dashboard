@@ -39,7 +39,7 @@ $('.search-button').on('click', function (event) {
         localStorage.setItem('cities', JSON.stringify(cities))
         log(localStorage)
         $('#history').append(`
-      <button class='btn btn-secondary mb-2'>${city}</button>
+      <button class='btn btn-secondary m-1'>${city}</button>
       `)
       }
       // pushing forecast to the site after removing previous results
@@ -48,8 +48,8 @@ $('.search-button').on('click', function (event) {
       <div class='container'>
       <div class='row'>
       <h3>5-Day Forecast:</h3>
-      <div class="col-sm forecast-5 m-1 bg-info text-light border">
-      <p>${moment().add(1, 'days').format('DD/MM/YYYY')}</p>
+      <div class="col-sm forecast-1 m-1 bg-info text-light border">
+      <p>${moment().add(1, 'days').format('DD/MM/YYYY')}</p> 
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[1].weather[0].icon}.png"></img>
       <p>Temperature: ${(weatherResponse.list[1].main.temp - 273.15).toFixed(2)}°C</p>
       <p>Feels Like: ${(weatherResponse.list[1].main.feels_like - 273.15).toFixed(2)}°C</p>
@@ -95,6 +95,7 @@ $('.search-button').on('click', function (event) {
 });
 
 //todo: preferably put both search and and history rendering in one function
+// basically repeating lines 6-95 with minor changes like not appending history buttons
 $('#history').on('click', function (event) {
   if (event.target.matches('button')) {
     let historyButton = event.target
@@ -184,14 +185,15 @@ if (localStorage.getItem('cities') !== null) {
   cities = JSON.parse(localStorage.cities)
   for (let i = 0; i < cities.length; i++) {
     $('#history').append(`
-      <button class='btn btn-secondary mb-2'>${cities[i]}</button>
+      <button class='btn btn-secondary m-1'>${cities[i]}</button>
       `)
   }
 }
 
-// prepending clear history button to #history
+// adding style and prepending clear history button to #history
+$('#history').addClass('border')
 $('#history').prepend(`
-      <div class='btn btn-warning mb-2'>Clear History</div>
+      <div class='btn btn-warning m-1'>Clear History</div>
       `)
 
 // removing cities from local storage when 'clear history' div is clicked
@@ -199,6 +201,6 @@ $('.btn-warning').on('click', function () {
   localStorage.removeItem('cities')
   $('#history').empty()
   $('#history').prepend(`
-        <div class='btn btn-warning mb-2'>Clear History</div>
+        <div class='btn btn-warning m-1'>Clear History</div>
         `)
 })
