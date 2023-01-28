@@ -8,7 +8,7 @@ $('.search-button').on('click', function (event) {
   event.preventDefault()
   // text from form is sent to api changing it to cooridinates
   let city = $("#search-input").val().trim();
-  let geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&units=metric&appid=${apiKey}`
+  let geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&units=metric&appid=${apiKey}`
   $.ajax({
     url: geoURL,
     method: "GET"
@@ -96,7 +96,7 @@ $('#history').on('click', function (event) {
     let historyButton = event.target
     let city = historyButton.innerText;
     // text from button is sent to api changing it to cooridinates
-    let geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&units=metric&appid=${apiKey}`
+    let geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&units=metric&appid=${apiKey}`
     $.ajax({
       url: geoURL,
       method: "GET"
