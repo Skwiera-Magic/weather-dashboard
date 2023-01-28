@@ -25,7 +25,7 @@ $('.search-button').on('click', function (event) {
       $('#today').empty()
       $('#today').append(`
       <div class="border p-2">
-      <h3>${city}, ${weatherResponse.city.country} - ${moment().format('DD/MM/YYYY HH:mm')}</h3>
+      <h3>${city}, ${weatherResponse.city.country} - ${moment().format('DD/MM/YYYY')}</h3>
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[0].weather[0].icon}.png"></img>
       <p>Temperature: ${(weatherResponse.list[0].main.temp - 273.15).toFixed(2)}°C</p>
       <p>Feels Like: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}°C</p>
@@ -116,7 +116,7 @@ $('#history').on('click', function (event) {
         $('#today').empty()
         $('#today').append(`
         <div class="border p-2">
-        <h3>${city}, ${weatherResponse.city.country} - ${moment().format('DD/MM/YYYY HH:mm')}</h3>
+        <h3>${city}, ${weatherResponse.city.country} - ${moment().format('DD/MM/YYYY')}</h3>
         <img src="https://openweathermap.org/img/wn/${weatherResponse.list[0].weather[0].icon}.png"></img>
         <p>Temperature: ${(weatherResponse.list[0].main.temp - 273.15).toFixed(2)}°C</p>
         <p>Feels Like: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}°C</p>
