@@ -91,14 +91,12 @@ $('.search-button').on('click', function (event) {
     });
 
 })
-
+//todo: preferably put both search and and history rendering in one function
 $('#history').on('click', function(event) {
   if(event.target.matches('button')) {
-    // preventing text from the form to be pushed to end of the link
-    event.preventDefault()
     let historyButton = event.target
-    // text from form is sent to api changing it to cooridinates
     let city = historyButton.innerText;
+    // text from button is sent to api changing it to cooridinates
     let geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&units=metric&appid=${apiKey}`
     $.ajax({
       url: geoURL,
@@ -125,15 +123,6 @@ $('#history').on('click', function(event) {
         <p>Humidity: ${weatherResponse.list[0].main.humidity}%</p>
         </div>
         `)
-            // adding history search button after pressing search button 
-            if (!(cities.includes(city))) {
-              cities.push(city)
-              localStorage.setItem('cities', JSON.stringify(cities))
-              log(localStorage)
-              $('#history').prepend(`
-        <button class='btn btn-secondary mb-2'>${city}</button>
-        `)
-            }
             // pushing forecast to the site after removing previous results
             $('#forecast').empty()
             $('#forecast').append(`
@@ -184,3 +173,12 @@ $('#history').on('click', function(event) {
   }
 })
 
+
+// prepending history buttons based on cities stored in local storage
+cities = JSON.parse(localStorage.cities)
+for (let i = 0; i < cities.length; i++) {
+  $('#history').prepend(`
+      <button class='btn btn-secondary mb-2'>${cities[i]}</button>
+      `)
+  log()
+}
