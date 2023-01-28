@@ -9,24 +9,21 @@ $('.search-button').on('click', function (event) {
   // text from form is sent to api changing it to cooridinates
   let city = $("#search-input").val().trim();
   let geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&units=metric&appid=${apiKey}`
-  $.ajax({
-    url: geoURL,
-    method: "GET"
-  })
-    // after coordinates are received back they are immidiately sent to weather api
+  fetch(geoURL)
+    .then(response => response.json())
     .then(function (response) {
       let lat = response[0].lat
       let lon = response[0].lon
+      // after coordinates are received back they are immidiately sent to weather api
       let queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&cnt=6`
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        // results are appended to site after clearing out previous results
-        .then(function renderForecast(weatherResponse) {
-          let city = weatherResponse.city.name
-          $('#today').empty()
-          $('#today').append(`
+      return fetch(queryURL)
+    })
+    .then(response => response.json())
+    .then(function renderForecast(weatherResponse) {
+      let city = weatherResponse.city.name
+      // results are appended to site after clearing out previous results
+      $('#today').empty()
+      $('#today').append(`
       <div class="border p-2">
       <h3>${city} ${moment().format('DD/MM/YYYY')}</h3>
       <p>Temperature: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}C Degrees</p>
@@ -34,18 +31,18 @@ $('.search-button').on('click', function (event) {
       <p>Humidity: ${weatherResponse.list[0].main.humidity}%</p>
       </div>
       `)
-          // adding history search button after pressing search button 
-          if (!(cities.includes(city))) {
-            cities.push(city)
-            localStorage.setItem('cities', JSON.stringify(cities))
-            log(localStorage)
-            $('#history').append(`
+      // adding history search button after pressing search button 
+      if (!(cities.includes(city))) {
+        cities.push(city)
+        localStorage.setItem('cities', JSON.stringify(cities))
+        log(localStorage)
+        $('#history').append(`
       <button class='btn btn-secondary mb-2'>${city}</button>
       `)
-          }
-          // pushing forecast to the site after removing previous results
-          $('#forecast').empty()
-          $('#forecast').append(`
+      }
+      // pushing forecast to the site after removing previous results
+      $('#forecast').empty()
+      $('#forecast').append(`
       <div class='container'>
       <div class='row'>
       <h3>5-Day Forecast:</h3>
@@ -87,9 +84,9 @@ $('.search-button').on('click', function (event) {
       </div>
       </div>
       `)
-        })
-    });
-})
+    })
+});
+
 //todo: preferably put both search and and history rendering in one function
 $('#history').on('click', function (event) {
   if (event.target.matches('button')) {
@@ -97,24 +94,19 @@ $('#history').on('click', function (event) {
     let city = historyButton.innerText;
     // text from button is sent to api changing it to cooridinates
     let geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&units=metric&appid=${apiKey}`
-    $.ajax({
-      url: geoURL,
-      method: "GET"
-    })
-      // after coordinates are received back they are immidiately sent to weather api
+    fetch(geoURL)
+      .then(response => response.json())
       .then(function (response) {
         let lat = response[0].lat
         let lon = response[0].lon
         let queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&cnt=6`
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        })
-          // results are appended to site after clearing out previous results
-          .then(function renderForecast(weatherResponse) {
-            let city = weatherResponse.city.name
-            $('#today').empty()
-            $('#today').append(`
+        return fetch(queryURL)
+      })
+      .then(response => response.json())
+      .then(function renderForecast(weatherResponse) {
+        let city = weatherResponse.city.name
+        $('#today').empty()
+        $('#today').append(`
         <div class="border p-2">
         <h3>${city} ${moment().format('DD/MM/YYYY')}</h3>
         <p>Temperature: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}C Degrees</p>
@@ -122,9 +114,9 @@ $('#history').on('click', function (event) {
         <p>Humidity: ${weatherResponse.list[0].main.humidity}%</p>
         </div>
         `)
-            // pushing forecast to the site after removing previous results
-            $('#forecast').empty()
-            $('#forecast').append(`
+        // pushing forecast to the site after removing previous results
+        $('#forecast').empty()
+        $('#forecast').append(`
         <div class='container'>
         <div class='row'>
         <h3>5-Day Forecast:</h3>
@@ -166,8 +158,8 @@ $('#history').on('click', function (event) {
         </div>
         </div>
         `)
-          })
-      });
+      })
+
   }
 })
 
