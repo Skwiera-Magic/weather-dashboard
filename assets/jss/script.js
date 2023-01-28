@@ -39,7 +39,7 @@ $('.search-button').on('click', function (event) {
             cities.push(city)
             localStorage.setItem('cities', JSON.stringify(cities))
             log(localStorage)
-            $('#history').prepend(`
+            $('#history').append(`
       <button class='btn btn-secondary mb-2'>${city}</button>
       `)
           }
@@ -89,11 +89,10 @@ $('.search-button').on('click', function (event) {
       `)
         })
     });
-
 })
 //todo: preferably put both search and and history rendering in one function
-$('#history').on('click', function(event) {
-  if(event.target.matches('button')) {
+$('#history').on('click', function (event) {
+  if (event.target.matches('button')) {
     let historyButton = event.target
     let city = historyButton.innerText;
     // text from button is sent to api changing it to cooridinates
@@ -169,16 +168,31 @@ $('#history').on('click', function(event) {
         `)
           })
       });
-  
   }
 })
 
 
 // prepending history buttons based on cities stored in local storage
-cities = JSON.parse(localStorage.cities)
-for (let i = 0; i < cities.length; i++) {
-  $('#history').prepend(`
+if (localStorage.getItem('cities') !== null) {
+  cities = JSON.parse(localStorage.cities)
+  for (let i = 0; i < cities.length; i++) {
+    $('#history').append(`
       <button class='btn btn-secondary mb-2'>${cities[i]}</button>
       `)
-  log()
+  }
 }
+
+// prepending clear history button to #history
+$('#history').prepend(`
+      <div class='btn btn-warning mb-2'>Clear History</div>
+      `)
+
+// removing cities from local storage when 'clear history' div is clicked
+$('.btn-warning').on('click', function () {
+  localStorage.removeItem('cities')
+  log(localStorage)
+  $('#history').empty()
+  $('#history').prepend(`
+        <div class='btn btn-warning mb-2'>Clear History</div>
+        `)
+})
