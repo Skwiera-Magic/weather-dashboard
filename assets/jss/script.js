@@ -27,7 +27,7 @@ $('.search-button').on('click', function (event) {
       <div class="border p-2">
       <h3>${city} ${moment().format('DD/MM/YYYY')}</h3>
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[0].weather[0].icon}.png"></img>
-      <p>Temperature: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}C Degrees</p>
+      <p>Temperature: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}°C</p>
       <p>Wind speed: ${weatherResponse.list[0].wind.speed}km/h</p>
       <p>Humidity: ${weatherResponse.list[0].main.humidity}%</p>
       </div>
@@ -50,35 +50,35 @@ $('.search-button').on('click', function (event) {
       <div class="col-sm forecast-5 m-1 bg-info text-light border">
       <p>${moment().add(1, 'days').format('DD/MM/YYYY')}</p>
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[1].weather[0].icon}.png"></img>
-      <p>Temp: ${(weatherResponse.list[1].main.feels_like - 273.15).toFixed(2)}</p>
+      <p>Temp: ${(weatherResponse.list[1].main.feels_like - 273.15).toFixed(2)}°C</p>
       <p>Wind: ${weatherResponse.list[1].wind.speed}Km/h</p>
       <p>Humidity: ${weatherResponse.list[1].main.humidity}%</p>
       </div>
       <div class="col-sm forecast-2 m-1 bg-info text-light border">
       <p>${moment().add(2, 'days').format('DD/MM/YYYY')}</p>
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[2].weather[0].icon}.png"></img>
-      <p>Temp: ${(weatherResponse.list[2].main.feels_like - 273.15).toFixed(2)}C</p>
+      <p>Temp: ${(weatherResponse.list[2].main.feels_like - 273.15).toFixed(2)}°C</p>
       <p>Wind: ${weatherResponse.list[2].wind.speed}Km/h</p>
       <p>Humidity: ${weatherResponse.list[2].main.humidity}%</p>      
       </div>
       <div class="col-sm forecast-3 m-1 bg-info text-light border">
       <p>${moment().add(3, 'days').format('DD/MM/YYYY')}</p>
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[3].weather[0].icon}.png"></img>
-      <p>Temp: ${(weatherResponse.list[3].main.feels_like - 273.15).toFixed(2)}</p>
+      <p>Temp: ${(weatherResponse.list[3].main.feels_like - 273.15).toFixed(2)}°C</p>
       <p>Wind: ${weatherResponse.list[3].wind.speed}Km/h</p>
       <p>Humidity: ${weatherResponse.list[3].main.humidity}%</p>      
       </div>
       <div class="col-sm forecast-4 m-1 bg-info text-light border">
       <p>${moment().add(4, 'days').format('DD/MM/YYYY')}</p>
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[4].weather[0].icon}.png"></img>
-      <p>Temp: ${(weatherResponse.list[4].main.feels_like - 273.15).toFixed(2)}</p>
+      <p>Temp: ${(weatherResponse.list[4].main.feels_like - 273.15).toFixed(2)}°C</p>
       <p>Wind: ${weatherResponse.list[4].wind.speed}Km/h</p>
       <p>Humidity: ${weatherResponse.list[4].main.humidity}%</p>
       </div>
       <div class="col-sm forecast-5 m-1 bg-info text-light border">
       <p>${moment().add(5, 'days').format('DD/MM/YYYY')}</p>
       <img src="https://openweathermap.org/img/wn/${weatherResponse.list[5].weather[0].icon}.png"></img>
-      <p>Temp: ${(weatherResponse.list[5].main.feels_like - 273.15).toFixed(2)}</p>
+      <p>Temp: ${(weatherResponse.list[5].main.feels_like - 273.15).toFixed(2)}°C</p>
       <p>Wind: ${weatherResponse.list[5].wind.speed}Km/h</p>
       <p>Humidity: ${weatherResponse.list[5].main.humidity}%</p>      
       </div>
@@ -111,7 +111,7 @@ $('#history').on('click', function (event) {
         <div class="border p-2">
         <h3>${city} ${moment().format('DD/MM/YYYY')}</h3>
         <img src="https://openweathermap.org/img/wn/${weatherResponse.list[0].weather[0].icon}.png"></img>
-        <p>Temperature: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}C Degrees</p>
+        <p>Temperature: ${(weatherResponse.list[0].main.feels_like - 273.15).toFixed(2)}°C</p>
         <p>Wind speed: ${weatherResponse.list[0].wind.speed}km/h</p>
         <p>Humidity: ${weatherResponse.list[0].main.humidity}%</p>
         </div>
@@ -125,35 +125,35 @@ $('#history').on('click', function (event) {
         <div class="col-sm forecast-1 m-1 bg-info text-light border">
         <p>${moment().add(1, 'days').format('DD/MM/YYYY')}</p>
         <img src="https://openweathermap.org/img/wn/${weatherResponse.list[1].weather[0].icon}.png"></img>
-        <p>Temp: ${(weatherResponse.list[1].main.feels_like - 273.15).toFixed(2)}</p>
+        <p>Temp: ${(weatherResponse.list[1].main.feels_like - 273.15).toFixed(2)}°C</p>
         <p>Wind: ${weatherResponse.list[1].wind.speed}Km/h</p>
         <p>Humidity: ${weatherResponse.list[1].main.humidity}%</p>
         </div>
         <div class="col-sm forecast-2 m-1 bg-info text-light border">
         <p>${moment().add(2, 'days').format('DD/MM/YYYY')}</p>
         <img src="https://openweathermap.org/img/wn/${weatherResponse.list[2].weather[0].icon}.png"></img>
-        <p>Temp: ${(weatherResponse.list[2].main.feels_like - 273.15).toFixed(2)}C</p>
+        <p>Temp: ${(weatherResponse.list[2].main.feels_like - 273.15).toFixed(2)}°C</p>
         <p>Wind: ${weatherResponse.list[2].wind.speed}Km/h</p>
         <p>Humidity: ${weatherResponse.list[2].main.humidity}%</p>      
         </div>
         <div class="col-sm forecast-3 m-1 bg-info text-light border">
         <p>${moment().add(3, 'days').format('DD/MM/YYYY')}</p>
         <img src="https://openweathermap.org/img/wn/${weatherResponse.list[3].weather[0].icon}.png"></img>
-        <p>Temp: ${(weatherResponse.list[3].main.feels_like - 273.15).toFixed(2)}</p>
+        <p>Temp: ${(weatherResponse.list[3].main.feels_like - 273.15).toFixed(2)}°C</p>
         <p>Wind: ${weatherResponse.list[3].wind.speed}Km/h</p>
         <p>Humidity: ${weatherResponse.list[3].main.humidity}%</p>      
         </div>
         <div class="col-sm forecast-4 m-1 bg-info text-light border">
         <p>${moment().add(4, 'days').format('DD/MM/YYYY')}</p>
         <img src="https://openweathermap.org/img/wn/${weatherResponse.list[4].weather[0].icon}.png"></img>
-        <p>Temp: ${(weatherResponse.list[4].main.feels_like - 273.15).toFixed(2)}</p>
+        <p>Temp: ${(weatherResponse.list[4].main.feels_like - 273.15).toFixed(2)}°C</p>
         <p>Wind: ${weatherResponse.list[4].wind.speed}Km/h</p>
         <p>Humidity: ${weatherResponse.list[4].main.humidity}%</p>
         </div>
         <div class="col-sm forecast-5 m-1 bg-info text-light border">
         <p>${moment().add(5, 'days').format('DD/MM/YYYY')}</p>
         <img src="https://openweathermap.org/img/wn/${weatherResponse.list[5].weather[0].icon}.png"></img>
-        <p>Temp: ${(weatherResponse.list[5].main.feels_like - 273.15).toFixed(2)}</p>
+        <p>Temp: ${(weatherResponse.list[5].main.feels_like - 273.15).toFixed(2)}°C</p>
         <p>Wind: ${weatherResponse.list[5].wind.speed}Km/h</p>
         <p>Humidity: ${weatherResponse.list[5].main.humidity}%</p>      
         </div>
