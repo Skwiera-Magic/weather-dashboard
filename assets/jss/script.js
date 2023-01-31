@@ -37,7 +37,6 @@ $('.search-button').on('click', function (event) {
       if (!(cities.includes(city))) {
         cities.push(city)
         localStorage.setItem('cities', JSON.stringify(cities))
-        log(localStorage)
         $('#history').append(`
       <button class='btn btn-secondary m-1'>${city}</button>
       `)
@@ -112,7 +111,6 @@ $('#history').on('click', function (event) {
       })
       .then(response => response.json())
       .then(function renderForecast(weatherResponse) {
-        log(weatherResponse)
         let city = weatherResponse.city.name
         $('#today').empty()
         $('#today').append(`
